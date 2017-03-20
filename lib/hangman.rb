@@ -48,21 +48,22 @@ class Hangman
   end
 
   def save(game, filename)
-      puts "\nSaving Game..."
-      File.open(filename, 'w') do |f|
-          f.print Marshal.dump(game)
-      end
-      puts "\n\t*Game Saved\n"
+    puts "\nSaving Game..."
+    File.open(filename, 'w') do |f|
+      f.print Marshal.dump(game)
+      f.close
+    end
+    puts "\n\t*Game Saved\n"
   end
 
   def load(filename)
-      puts "\noading Game..."
-      game = Marshal.load(File.open(filename, 'r'))
-      @word = game.word
-      @guesses = game.guesses
-      @misses = game.misses
-      @incorrect = game.incorrect
-      puts "\n\t*Game Loaded\n"
+    puts "\nLoading Game..."
+    game = Marshal.load(File.open(filename, 'r'))
+    @word = game.word
+    @guesses = game.guesses
+    @misses = game.misses
+    @incorrect = game.incorrect
+    puts "\n\t*Game Loaded\n"
   end
 
   def set_letter(letter)

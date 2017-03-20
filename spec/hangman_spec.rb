@@ -76,4 +76,15 @@ describe Hangman.new 'test' do
     end
   end
 
+  describe ".set_letter" do 
+    context "provided a letter" do 
+      it "returns correct guess logic" do 
+        expect(hangman.set_letter("e")).to eq([["e", 1]])
+      end
+
+      it "returns failed guess logic" do 
+        expect(hangman.set_letter("n")).to eq 1
+      end
+    end
+  end
 end

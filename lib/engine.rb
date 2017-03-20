@@ -50,7 +50,7 @@ class Engine
     case choice
     when "" then return
     when "1"
-      print "\nName of save faile?\n> "
+      print "\nName of save file?\n> "
       game.save(game, $stdin.gets.chomp)
     when "2"
       puts Dir.entries(".").select { |f| f =~ /.json/ }
@@ -72,5 +72,3 @@ class Engine
     guess
   end
 end
-
-hang = Engine.new

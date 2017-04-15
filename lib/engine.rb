@@ -3,25 +3,24 @@ require_relative 'hangman.rb'
 class Engine
   def initialize
     @hang = Hangman.new
-    play(@hang)
   end
 
-  def play(game)
-    while game.win? == false && game.incorrect != 8
-      game.display_status
-      set_choice(take_choice, game)
-      game.set_letter(take_letter)
+  def play
+    while @hang.win? == false && @hang.incorrect != 8
+      @hang.display_status
+      set_choice(take_choice, @hang)
+      @hang.set_letter(take_letter)
     end
 
-    if game.win?
+    if @hang.win?
       print "\n\t*You Win!\n"
-      print "\n\t\"#{game.word.join}\"\n"
+      print "\n\t\"#{@hang.word.join}\"\n"
     else
       print "\n\t*You Lose!\n"
-      print "\n\tThe correct word was: \t\"#{game.word.join}\"\n"
+      print "\n\tThe correct word was: \t\"#{@hang.word.join}\"\n"
     end
 
-    game.display_status
+    @hang.display_status
   end
 
   def check_guess(letter)

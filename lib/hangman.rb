@@ -23,17 +23,17 @@ class Hangman
 
   def select_word(word)
     while word == ""
-      word = File.readlines("/Users/cswanson/Dropbox/coding/ruby/hangman/5desk.txt").sample.strip.downcase
+      word = File.readlines("../5desk.txt").sample.strip.downcase
     end
     word.length < 7 || word.length > 14 ? select_word("") : word
   end
 
   def letter_correct?(letter)
-    @word.include?(letter) ? true : false
+    @word.include?(letter)
   end
 
   def win?
-    @guesses == @word ? true : false
+    @guesses == @word
   end
 
   def update_guesses(letter)
